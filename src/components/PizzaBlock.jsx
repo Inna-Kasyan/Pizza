@@ -1,18 +1,19 @@
 import React from "react";
 
-function PizzaBlock({ title, price, image, sizes, types }) {
+function PizzaBlock({ title, price, imageUrl, sizes, types, id }) {
   const pizzasTypes = ["Тонкое", "Традиционное"];
   const [typeValue, setTypeValue] = React.useState(0);
   const [sizeValue, setSizeValue] = React.useState(0);
 
   return (
     <div className="pizza-block">
-      <img className="pizza-block__image" src={image} alt="Pizza" />
+      <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
       <h4 className="pizza-block__title">{title}</h4>
       <div className="pizza-block__selector">
         <ul>
           {types.map((type) => (
             <li
+              key={type}
               onClick={() => setTypeValue(type)}
               className={type === typeValue ? "active" : ""}
             >
@@ -23,6 +24,7 @@ function PizzaBlock({ title, price, image, sizes, types }) {
         <ul>
           {sizes.map((size, i) => (
             <li
+              key={i}
               onClick={() => setSizeValue(i)}
               className={i === sizeValue ? "active" : ""}
             >
