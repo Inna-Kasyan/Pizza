@@ -3,19 +3,20 @@ import ContentLoader from "react-content-loader"
 
 const Skeleton = (props) => (
     <ContentLoader
+        className='pizza-block'
         speed={2}
-        width={600}
-        height={600}
-        viewBox="0 0 600 600"
+        width={280}
+        height={500}
+        viewBox="0 0 280 500"
         backgroundColor="#f3f3f3"
         foregroundColor="#ecebeb"
-        {...props}
+
     >
-        <rect x="10" y="355" rx="20" ry="20" width="261" height="89" />
-        <rect x="14" y="465" rx="11" ry="11" width="94" height="27" />
-        <rect x="120" y="459" rx="22" ry="22" width="153" height="47" />
-        <circle cx="125" cy="125" r="125" />
-        <rect x="14" y="318" rx="19" ry="19" width="248" height="25" />
+        <rect x="0" y="279" rx="10" ry="10" width="280" height="23" />
+        <rect x="0" y="326" rx="10" ry="10" width="280" height="88" />
+        <rect x="0" y="436" rx="10" ry="10" width="95" height="30" />
+        <circle cx="134" cy="136" r="125" />
+        <rect x="125" y="427" rx="24" ry="24" width="152" height="45" />
     </ContentLoader>
 )
 
