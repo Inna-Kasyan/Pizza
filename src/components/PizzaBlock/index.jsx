@@ -1,20 +1,19 @@
 import React from "react";
-import Categories from './components/Categories';
-import PizzaBlock from './components/PizzaBlock';
-import Sort from './components/Sort';
-import pizzas from '../src/assets/db.json'
-import Skeleton from './components/PizzaBlock/Skeleton.jsx';
 
-function PizzaBlock({ title, price, imageUrl, sizes, types, id }) {
+
+
+
+function PizzaBlock({ name, price, imageUrl, sizes, types, id }) {
     const pizzasTypes = ["Тонкое", "Традиционное"];
     const [typeValue, setTypeValue] = React.useState(0);
     const [sizeValue, setSizeValue] = React.useState(0);
 
     return (
-        <div className={pizza_wrapper}>
+
+        < div className='pizza_wrapper' >
             <div className="pizza-block">
                 <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
-                <h4 className="pizza-block__title">{title}</h4>
+                <h4 className="pizza-block__title">{name}</h4>
                 <div className="pizza-block__selector">
                     <ul>
                         {types.map((type) => (
@@ -59,7 +58,7 @@ function PizzaBlock({ title, price, imageUrl, sizes, types, id }) {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 
 }
