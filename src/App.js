@@ -9,16 +9,16 @@ import NotFound from './pages/NotFound'
 
 function App() {
 
-
+  const [inputValue, setInputValue] = React.useState('')
 
 
   return (
     <div className="wrapper">
-      <Header />
+      <Header inputValue={inputValue} setInputValue={setInputValue} />
       <div className="content">
         <div className="container">
           <Routes>
-            <Route path='/' element={<Home />} />
+            <Route path='/' element={<Home inputValue={inputValue} />} />
             <Route path='*' element={<NotFound />} />
             <Route path='/cart' element={< Cart />} />
           </Routes>
