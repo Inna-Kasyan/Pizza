@@ -6,6 +6,7 @@ import Cart from './pages/Cart';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound'
 
+export const SearchContext = React.createContext();
 
 function App() {
 
@@ -14,19 +15,21 @@ function App() {
 
   return (
     <div className="wrapper">
-      <Header inputValue={inputValue} setInputValue={setInputValue} />
-      <div className="content">
-        <div className="container">
-          <Routes>
-            <Route path='/' element={<Home inputValue={inputValue} />} />
-            <Route path='*' element={<NotFound />} />
-            <Route path='/cart' element={< Cart />} />
-          </Routes>
+      < SearchContext.Provider value={{ inputValue, setInputValue }} >
+        <Header />
+        <div className="content">
+          <div className="container">
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='*' element={<NotFound />} />
+              <Route path='/cart' element={< Cart />} />
+            </Routes>
 
 
 
+          </div>
         </div>
-      </div>
+      </SearchContext.Provider>
     </div>
   );
 }

@@ -6,10 +6,11 @@ import Sort from '../components/Sort';
 import Skeleton from '../components/PizzaBlock/Skeleton.jsx';
 
 import Pagination from '../components/Pagination/Index';
+import { SearchContext } from '../App';
 
-const Home = ({ inputValue }) => {
+const Home = () => {
 
-
+    const { inputValue } = React.useContext(SearchContext)
     const [items, setItems] = React.useState([])
     const [isLoading, setIsLoading] = React.useState(true)
     const [categoryId, setCategoryId] = React.useState(0);
@@ -36,7 +37,14 @@ const Home = ({ inputValue }) => {
     }, [categoryId, sortType, inputValue, currentPage])
 
     const skeletons = [...new Array(6)].map((_, i) => < Skeleton key={i} />);
-    const pizzas = items.map((pizza) => < PizzaBlock {...pizza} key={pizza.id} />);
+    const pizzas = items
+        .filter((pizza) => {
+            if (pizza.name.toLowerCase().includes(inputValue.toLowerCase())) {
+                return true;
+            }
+            return false
+        })
+        .map((pizza) => < PizzaBlock {...pizza} key={pizza.id} />);
 
     return (
         <>
@@ -58,4 +66,3 @@ const Home = ({ inputValue }) => {
 }
 
 export default Home
-
